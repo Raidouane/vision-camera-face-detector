@@ -9,8 +9,9 @@ public class VisionCameraFaceDetector: NSObject, FrameProcessorPluginBase {
 
   static var FaceDetectorOption: FaceDetectorOptions = {
     let option = FaceDetectorOptions()
+    option.performanceMode = .accurate
+    option.landmarkMode = .all
     option.contourMode = .all
-    option.performanceMode = .fast
     return option
   }()
 
@@ -80,9 +81,8 @@ public class VisionCameraFaceDetector: NSObject, FrameProcessorPluginBase {
 
     do {
         faces =  try faceDetector.results(in: image)
-           if (!faces.isEmpty){
+        if (!faces.isEmpty){
                let processedFaces = processFace(from: faces)
-               print("processedFaces", processedFaces)
                return processedFaces
            }
        } catch _ {
