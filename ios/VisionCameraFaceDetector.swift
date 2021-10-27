@@ -76,7 +76,7 @@ public class VisionCameraFaceDetector: NSObject, FrameProcessorPluginBase {
         return [];
     }
     let image = VisionImage.init(image: imageScaled!)
-    image.orientation = frame.orientation
+    image.orientation = .right
     var faces:  [Face]
 
     do {
